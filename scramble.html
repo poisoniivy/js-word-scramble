@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Scramble</title>
+</head>
+<body>
+    <h1>A Javascript Word Scramble Game</h1>
+
+    <script>
+        var WORDS     = ["booger", "apple", "hackbright", "mango"];
+        var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman"];
+
+        var playing = true;
+
+        while (playing) {
+
+            var position = Math.floor(Math.random() * WORDS.length);
+            // Grab a random word from the WORDS array.
+            var word = WORDS[position];
+
+            // Grab the corresponding scrambled word from the SCRAMBLED array.
+            var scrambledWord = SCRAMBLED[position];
+
+            // Prompt the user to guess the original word when given the scrambled word.
+            var guess = prompt("Guess this scrambled word: " + scrambledWord, 
+                                                "Your Guess");
+
+            guess = guess.toLowerCase().trim();
+            // If the user guesses wrong, tell them they were wrong and show the right word.
+            if (guess != word) {
+                alert("Nope! The correct word is: " + word);
+            } else {
+                alert("Congrats! That is correct!");
+            }
+            // If the user guesses the correct word, congratulate them.
+
+            playing = confirm("Press OK To keep playing or Cancel to quit");
+
+            // What does confirm() return?
+            // What does setting the playing variable do?
+        }
+
+        // Adding a scrambled word into game!
+        function scramble() {
+            var newWord = prompt("Add in a new word to scramble!", "New Word");
+            WORDS.push(newWord);
+
+            var shuffledWord = '';
+            var i = 0;
+            while (i < newWord.length) {
+                letterIndex = Math.floor(Math.random() * newWord.length);
+                letter = newWord[letterIndex]
+                newWord = newWord.slice(0,letterIndex).concat(newWord(letterIndex+1)) //remove the letter somehow!!
+                shuffledWord = shuffledWord.concat(letter);
+            }
+            
+        }
+
+        alert("goodbye!");
+    </script>
+    
+</body>
+</html>
